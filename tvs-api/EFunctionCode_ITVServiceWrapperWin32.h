@@ -1,0 +1,19 @@
+
+class ITVServiceWrapperWin32_FC
+{
+public:
+	enum EFunctionCode_ITVServiceWrapperWin32
+	{
+		FC_INIT = 0 ,
+		FC_POWER,
+		FC_GETPOWERSTATE,
+		FC_GETCOUNTRY,
+		FC_SETCOUNTRY,
+		FC_GETREGIONKIND,
+		FC_CONVERTTOTIZENCOUNTRY,
+		FC_SETAUTOCLOCK,
+		FC_FLAGAUTOCLOCK,
+		FC_STORERATING,
+	};
+};
+

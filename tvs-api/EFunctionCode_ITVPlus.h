@@ -1,0 +1,12 @@
+
+class ITVPlus_FC
+{
+public:
+	enum EFunctionCode_ITVPlus
+	{
+		FC_SENDTVPLUSTUNESUCCESS = 0 ,
+		FC_SENDTVPLUSTUNEFAIL,
+		FC_SENDTVPLUSTUNESTART,
+	};
+};
+

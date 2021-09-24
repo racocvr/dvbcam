@@ -1,0 +1,1226 @@
+/** 
+ * @file SOSpecDataType.h
+ * @brief Data types for TCSOSpec class.
+ *
+ * Copyright 2013 by Samsung Electronics, Inc.,
+ * 
+ * This software is the confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information"). You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung.
+ */
+#ifndef _SOSPECDATATYPE_H_
+#define _SOSPECDATATYPE_H_
+
+typedef enum
+{
+	LANGUAGE_CODE_UNKNOWN = -1,
+
+	/* digital */
+	// Multiple Sound는 각각의 언어의 대표 ISO-639 Language로 Enum을 설정한다..
+	// ISO-639 Code를 Multiple string Struct로 변활할 경우에는 반드시 MultipleStringStruct의 GetMultipleSound를 통해서 변환하여야 한다.
+	// MULTIPLE SOUND 추가시에는 MultipleStringStruct의 g_MTSSIGroup를 Update해주어야 한다.
+	LANGUAGE_CODE_DIGITAL_MIN	= 0x414140,	//!< Digital Multiple Language 값의 Minimum을 나타낸다. ('AAA' -1 값으로 setting)
+	LANGUAGE_CODE_KOR 		= 0x6B6F72,       //!< 한국어 음성 모드로 설정한다.  // Korean voice mode
+	LANGUAGE_CODE_DEU		= 0x646575,
+	LANGUAGE_CODE_ENG		= 0x656E67,       //!< 영어 음성 모드로 설정한다.        // English voice mode
+	LANGUAGE_CODE_SPA		= 0x737061,	//!< 스페인어 음성 모드로 설정한다.    //  Spanish voice mode
+	LANGUAGE_CODE_FRA		= 0x667261,
+	LANGUAGE_CODE_FRE		= 0x667265,       //!< 프랑스어 음성 모드로 설정한다.    //  French voice mode
+	LANGUAGE_CODE_JPN		= 0x6A706E,	//!< 일본어 음성 모드로 설정한다.	      // Japanes voice mode
+	LANGUAGE_CODE_CHI		= 0x636869,       //!< 중국어 음성 모드로 설정한다.      //  Chinese voice mode
+	LANGUAGE_CODE_CHS		= 0x636873,
+	LANGUAGE_CODE_GER		= 0x676572,       //!< 독일어 음성 모드로 설정한다.      //  German voice mode
+	LANGUAGE_CODE_ITA		= 0x697461,        //!< 이태리어 음성 모드로 설정한다.   // Italian voice mode
+	LANGUAGE_CODE_RUS		= 0x727573,       //!< 러시아어 음성 모드로 설정한다.    //  Russian voice mode
+	LANGUAGE_CODE_DUT		= 0x647574,       //!< 네델란드어 음성 모드로 설정한다.  //  Dutch voice mode
+	LANGUAGE_CODE_POR		= 0x706F72,       //!< 포르투갈어 음성 모드로 설정한다.  //  Portuguese voice mode
+
+	/* DVB */
+	LANGUAGE_CODE_SWE		= 0x737765,       //!< 스웨덴어 음성 모드로 설정한다.    // Swedish voice mode
+	LANGUAGE_CODE_BUL		= 0x62756C,       //!< 불가리아어 음성 모드로 설정한다.  // Bulgarian voice mode
+	LANGUAGE_CODE_SCR		= 0x736372,       //!< 크로아티아어 음성 모드로 설정한다.// Croatian voice mode
+	LANGUAGE_CODE_CZE		= 0x637A65,       //!< 체코어 음성 모드로 설정한다.      // Czech voice mode
+	LANGUAGE_CODE_GRE		= 0x677265,	    //!< 그리스어 음성 모드로 설정한다.	      // Greek voice mode
+	LANGUAGE_CODE_HUN		= 0x68756E,       //!< 헝가리어 음성 모드로 설정한다.    //  Hungarian voice mode
+	LANGUAGE_CODE_POL		= 0x706F6C,       //!< 폴란드어 음성 모드로 설정한다.    //  Polish voice mode
+	LANGUAGE_CODE_ROM		= 0x72756D,        //!< 루마니아어 음성 모드로 설정한다. // Rumanian voice mode
+	LANGUAGE_CODE_TUR		= 0x747572,       //!< 터키어 음성 모드로 설정한다.      // Turkish voice mode
+	LANGUAGE_CODE_DAN		= 0x64616E,       //!< 덴마크어 음성 모드로 설정한다.    // Danish voice mode
+	LANGUAGE_CODE_FIN		= 0x66696E,       //!< 핀란드어 음성 모드로 설정한다.    // Finnish voice mode
+	LANGUAGE_CODE_NOR		= 0x6E6F72,        //!< 노르웨이어 음성 모드로 설정한다. // Norwegian voice mode
+	LANGUAGE_CODE_SRP		= 0x737270,       //!< 세르비아어 음성 모드로 설정한다.  // Serbian voice mode
+	LANGUAGE_CODE_WEL		= 0x63796D,       //!< 웨일스어 음성 모드로 설정한다.    // Welsh voice mode
+	LANGUAGE_CODE_GLA		= 0x676468,       //!< 게일어 음성 모드로 설정한다.      // Gaelic voice mode
+	LANGUAGE_CODE_IRI		= 0x697269,       //!< 아일랜드어 음성 모드로 설정한다.  // Irish voice mode
+	LANGUAGE_CODE_SLK		= 0x736C6B,       //!< 슬로바키아 음성 모드로 설정한다.  // Slovakia voice mode
+	LANGUAGE_CODE_MAO		= 0x6D616F,       //!< 마오리 음성 모드로 설정한다.  // Maori voice mode
+	LANGUAGE_CODE_CMN		= 0x636D6E,       //!< 중국어 만다린어 음성 모드로 설정한다.  // Chinese (Mandarin) voice mode
+	LANGUAGE_CODE_YUE		= 0x797565,       //!< 중국어 광동어 음성 모드로 설정한다.  // Chinese (Cantonese) voice mode
+	LANGUAGE_CODE_HIN		= 0x68696E,       //!< 힌두어 음성 모드로 설정한다.  // Hindi voice mode
+	LANGUAGE_CODE_QAA		= 0x716161,	    //!< QAA, Singapore preffered audio.
+	LANGUAGE_CODE_QAB		= 0x716162,		//!< QAB, Singapore secondary audio.
+	LANGUAGE_CODE_QAC		= 0x716163,		//!< QAC, Singapore third audio.
+	LANGUAGE_CODE_AD		= 0x616420,	    //!< AD_space 입력시 Audio Description을 설정한다. // Audio Description mode
+	LANGUAGE_CODE_NAR     = 0x6E6172,     //!< NAR - Freesat Broadcast mix AD.
+	LANGUAGE_CODE_CAT		= 0x636174,	    //!< Catala 음성 모드로 설정한다. //catala void mode
+	LANGUAGE_CODE_VAL		= 0x76616C,	    //!< Valencia 음성 모드로 설정한다. //valencia void mode
+	LANGUAGE_CODE_UND     = 0x756e64,     //!< 'und' DVB Undefined language code.
+	LANGUAGE_CODE_GLG		= 0x676C67,	    //!< Galician 음성 모드로 설정한다. //Galician voice mode
+	LANGUAGE_CODE_EUS		= 0x657573,	    //!< basque 음성 모드로 설정한다. //basque voice mode
+	LANGUAGE_CODE_TAM		= 0x74616D,	   //!< tamil 음성 모드로 설정한다. //tamil voice mode
+	LANGUAGE_CODE_AUTO    = 0x797979,  	   //!< Auto Mode(YYY) 로 설정한다.  // Auto Mode
+	LANGUAGE_CODE_EST     = 0x657374,		//!< 에스토니아 음성 모드로 설정한다.  // Estonia voice mode		
+	LANGUAGE_CODE_ARA		= 0x617261,       //!< 아랍어 음성 모드로 설정한다.(모로코, 튀니지)   // Arab voice mode
+	LANGUAGE_CODE_PER		= 0x706572,       //!< 페르시아어 음성 모드로 설정한다.	// Persisian voice mode
+	LANGUAGE_CODE_THA		= 0x746861,       //!< 타이어  음성 모드로 설정한다.      // Thai voice mode
+	LANGUAGE_CODE_HEB		= 0x686562,       //!< 히브루어 음성 모드로 설정한다.  // Hebrew voice mode
+	LANGUAGE_CODE_IND		= 0x696e64,       //!< 인도네시아 음성 모드로 설정한다.  // Indonesia voice mode
+	LANGUAGE_CODE_VIE		= 0x766965,       //!< 베트남어 음성 모드로 설정한다.    // Vietnamese voice mode
+	LANGUAGE_CODE_URD		= 0x757264,       //!< 우르두어 음성 모드로 설정한다.      // Urdu voice mode
+	LANGUAGE_CODE_AFR		= 0x616672,       //!< 아프리카 아시아어 음성 모드로 설정한다.  // Afrikaans voice mode
+	LANGUAGE_CODE_ZUL		= 0x7A756C,       //!< 줄루어 음성 모드로 설정한다.  // Zulu voice mode
+	LANGUAGE_CODE_XHO		= 0x78686F,       //!< 코사어 음성 모드로 설정한다.    // Xhosa voice mode
+	LANGUAGE_CODE_YOR		= 0x796F72,       //!< 요루바어 음성 모드로 설정한다.      // Yoruba voice mode
+	LANGUAGE_CODE_IGB		= 0x696762,       //!< 이그보어 음성 모드로 설정한다.  // Igbo voice mode
+	LANGUAGE_CODE_HAU		= 0x686175,       //!< 하우사어 음성 모드로 설정한다.  // Hausa voice mode
+	LANGUAGE_CODE_SWA		= 0x736361,       //!< 스와힐리어 음성 모드로 설정한다.    // Swahili voice mode
+	LANGUAGE_CODE_AMH		= 0x616D68,       //!< 암하라어 음성 모드로 설정한다.      // Amharic voice mode
+	LANGUAGE_CODE_IRA		= 0x697261,       //!< 이란어 음성 모드로 설정한다.      // Iranian voice mode
+	LANGUAGE_CODE_FIL		= 0x66696C,       //!< 필리핀어 음성 모드로 설정한다.      // Pilipino voice mode			
+	LANGUAGE_CODE_LIT		= 0x6C6974,       //!< 리투아니아어 음성 모드로 설정한다.      // Lithuanian voice mode
+	LANGUAGE_CODE_LAV		= 0x6C6176,       //!< 라트비아어 음성 모드로 설정한다.      // Latvian voice mode		
+	LANGUAGE_CODE_SLV		= 0x736C76,       //!< 슬로베니아 음성 모드로 설정한다.  // Slovenia voice mode
+	LANGUAGE_CODE_ALB		= 0x616C62,       //!< 알바니아 음성 모드로 설정한다.  // Albania voice mode
+	LANGUAGE_CODE_UKR		= 0x756B72,       //!< 우크라이나 음성 모드로 설정한다.  // Ukraine voice mode		
+	LANGUAGE_CODE_KAZ		= 0x6B617A,       //!< 카자흐스탄 음성 모드로 설정한다.  // Kazakhstan voice mode
+	LANGUAGE_CODE_MKD		= 0x6D6B64,       //!< 마케도니아 음성 모드로 설정한다.  // Macedonia voice mode		
+	LANGUAGE_CODE_MAY		= 0x6D6179,       //!< 말레이시아 음성 모드로 설정한다.  // Malaysia voice mode
+	LANGUAGE_CODE_HRV		= 0x687276,	//!< 크로아티아어 음성 모드로 설정한다.// Croatian voice mode <- 실제 countryspec사용
+	LANGUAGE_CODE_AKA		= 0x616b61,	//!< Akan 음성 모드로 설정한다. // Akan voice mode
+	LANGUAGE_CODE_TWI		= 0x747769,	//!< Twi 음성 모드로 설정한다. // Twi voice mode
+	LANGUAGE_CODE_EWE		= 0x657765,	//!< Ewe 음성 모드로 설정한다. // Ewe voice mode
+	LANGUAGE_CODE_GAA		= 0x676161,	//!< Gaa 음성 모드로 설정한다. // Gaa voice mode
+	LANGUAGE_CODE_NZI		= 0x6e7a69,	//!< Nzema 음성 모드로 설정한다. // Nzema voice mode 
+	LANGUAGE_CODE_NBL		= 0x6e626c, //!< Ndebele (IsiNdebele) 음성 모드로 설정한다. // Ndebele voice mode
+	LANGUAGE_CODE_NSO		= 0x6e736f,//!< Sotho, Northern (Sepedi) 음성 모드로 설정한다. // Sotho, Northern voice mode
+	LANGUAGE_CODE_SOT		= 0x736f74,//!< Sotho, Southern (Sesotho) 음성 모드로 설정한다. // Sotho, Southern voice mode
+	LANGUAGE_CODE_SSW		= 0x737377,//!< Swati (SiSwati) 음성 모드로 설정한다. // Swati voice mode
+	LANGUAGE_CODE_TSO		= 0x74736f,//!< Tsonga (Xitsonga) 음성 모드로 설정한다. // Tsonga voice mode
+	LANGUAGE_CODE_TSN		= 0x74736e,//!< Tswana (Setswana) 음성 모드로 설정한다. // Tswana voice mode
+	LANGUAGE_CODE_VEN		= 0x76656e,//!< Venda (Tshivenda) 음성 모드로 설정한다. // Venda voice mode
+	LANGUAGE_CODE_MUL		= 0x6d756c,//!< Multiple Language 모드 //Multiple language mode
+	LANGUAGE_CODE_UZB		= 0x757a62,//!< Uzbek 음성모드 //Uzbek voce mode
+	LANGUAGE_CODE_AZE		= 0x617a65,//!< Azerbaycan Language 모드 //Azerbaycan mode
+	LANGUAGE_CODE_MON		= 0x6d6f6e,//!< Mongolian 모드 //Mongolian voice mode
+	LANGUAGE_CODE_BOS		= 0x626f73,//!< Bosna 모드 //Bosna mode
+	LANGUAGE_CODE_BEN		= 0x62656e, //!< India-Bengali(ben, bn)
+	LANGUAGE_CODE_TEL		= 0x74656c, //!< India-Telugu(tel, te)
+	LANGUAGE_CODE_MAR		= 0x6d6172, //!< India-Marathi(mar, mr)
+	LANGUAGE_CODE_KOK		= 0x6b6f6b, //!< India-Kokani(kok)
+	LANGUAGE_CODE_GUJ		= 0x67756a, //!< India-Gujarati(guj, gu)
+	LANGUAGE_CODE_KAN		= 0x6b616e, //!< India-Kannada(kan, kn)
+	LANGUAGE_CODE_MAL		= 0x6d616c, //!< India-Malayalam(mal, ml)
+	LANGUAGE_CODE_ORI		= 0x6f7269, //!< India-Oriya(ori, or)
+	LANGUAGE_CODE_PAN		= 0x70616e, //!< India-Punjabi(pan, pa)
+	LANGUAGE_CODE_ASM		= 0x61736d, //!< India-Assamese(asm, as)
+	LANGUAGE_CODE_DAG		= 0x646167, //!< Ghana-Dagbani(DAG)
+	LANGUAGE_CODE_XSM		= 0x78736d, //!< Ghana-Kasem(xsm)	
+	LANGUAGE_CODE_MSA		= 0x6d7361, //!< Malaysia-Bahasa Melayu(MSA)
+	LANGUAGE_CODE_ZHO		= 0x7a686f, //!< Malaysia-Chinense(ZHO)		
+	LANGUAGE_CODE_UNDEFINED  = 0x7A7A7B,   //!< 정의되지 않은 음성모드로 설정한다.  // Undefine voice mode ('ZZZ' + 1 값으로 Setting)
+
+	LANGUAGE_CODE_DIGITAL_MAX = LANGUAGE_CODE_UNDEFINED,
+}ELanguageCode;
+
+typedef enum
+{
+	FILTER_CAMODE_NOTUSE = 0,
+	FILTER_CAMODE = 1,
+	FILTER_CAMODE_AccodingTo_SCANMODE = 2,
+}EFilterCamMode;
+
+typedef enum
+{
+	FEATURE_NOT_SUPPORT = 0,
+	FEATURE_SUPPORT_NORMAL = 1,
+	FEATURE_SUPPORT_NETWORK_MODE_CABLE = 2,
+}EServiceListOrLCNOnthefly;
+
+// RCN Allocator Configuration
+typedef enum
+{
+	HDSIMULCAST_NOTAPPLY = 0,
+	HDSIMULCAST_SWAP = 1,
+	HDSIMULCAST_OVERRIDE = 2,
+	HDSIMULCAST_DISPLACED_LCN = 3,
+	HDSIMULCAST_SWAP_UK = 4,
+	HDSIMULCAST_LCNTABLE_MEDIASET = 5,
+}ERCNHDSIMulticastPolicy;
+
+typedef enum
+{
+	METHOD_BY_SERVICE_TYPE = 0,
+	METHOD_IGNORE_LCN_ALPHABET = 1,
+	METHOD_SATELLITE = 2,
+	METHOD_IGNORE_LCN_PTC = 3,
+	METHOD_BY_LCN = 4,
+	METHOD_BY_NID = 5,
+	METHOD_BY_TV_RADIO_SERVICE_TYPE = 6,
+	/// No 'temp' range, simply store with RCN set to UNKNOWN, but mark
+	/// the service as hidden.
+	METHOD_BY_LCN_ALLOW_INVALID = 7,
+	METHOD_HOTEL = 8,
+	METHOD_ASTRA_HD_PLUS = 9,		// RCN allocation specific for Astra HD+
+	METHOD_BY_LCN_ATTACH = 10,		// Allocate RCNs based on LCNs, assign services without LCNs after last LCN.
+	METHOD_DIGITAL_PLUS = 11,		// RCN allocation specific for Digital+
+	METHOD_MEDIASET = 12,		// RCN allocation specific for Mediaset
+	METHOD_REASSIGN_SERVICE_TYPE = 13,		// Allocate RCNs from scratch for old and new services, by service type.
+	METHOD_ECOWAS = 14,		// RCN allocation specific for Ecowas	
+	METHOD_BY_LCN_ATTACH_BY_SRV_TYPE = 15,	// Allocate RCNs based on LCNs, services without LCN assigned in categories by service type
+	METHOD_BY_PREDEFINED_RCN = 16,	// Allocate RCNs based on pre-defined RCN list and later according to METHOD_BY_SERVICE_TYPE
+	METHOD_CUBA = 17,		//RCN allocation specific for Cuba
+}EAssignAlgorithm;
+
+typedef enum
+{
+	ORIGIN_AUTOSTORE = 0,
+	ORIGIN_UPDATE_AUTOSTORE,
+	ORIGIN_MANUALSTORE,
+	ORIGIN_REORDER,
+	ORIGIN_AUTOSTORE_PREDEFINED,	// For Astra HD+, leave predefined service list range intact.
+	ORIGIN_DYNAMICSI,
+}ERCNAllocationOrigin;
+
+//TODO Duende: deprecated enum. Marked for removal.
+typedef enum
+{
+	COUNTRY_UNDEFINED = -1,
+	COUNTRY_MIN = 0x00,
+	COUNTRY_USA = 0,	/// this includes US, CANADA and Mexico
+	COUNTRY_PANAMA = 1,				/// this includes PANAMA, Chile, Columbia and Peru.
+								/// PANAMA is only available for US(ATSC base) Target location.
+	COUNTRY_KOR = 2,
+	COUNTRY_SPA = 3,
+	COUNTRY_FRA = 4,
+	COUNTRY_JPN = 5,
+	COUNTRY_EU = 6,
+	COUNTRY_UK = 7,
+	COUNTRY_GERMANY = 8,
+	COUNTRY_ITALY = 9,
+	COUNTRY_SWEDEN = 10,
+	COUNTRY_BULGARIA = 11,
+	COUNTRY_CROATIA = 12,
+	COUNTRY_CZECH = 13,
+	COUNTRY_NETHERLANDS = 14,
+	COUNTRY_GREECE = 15,
+	COUNTRY_HUNGARY = 16,
+	COUNTRY_POLAND = 17,
+	COUNTRY_PORTUGAL = 18,
+	COUNTRY_ROMANIA = 19,
+	COUNTRY_RUSSIA = 20,
+	COUNTRY_SWITZERLAND = 21,
+	COUNTRY_TURKEY = 22,
+	COUNTRY_AUSTRALIA = 23,
+	COUNTRY_AUSTRIA = 24,
+	COUNTRY_BELGIUM = 25, // not used
+	COUNTRY_DENMARK = 26,
+	COUNTRY_FINLAND = 27,
+	COUNTRY_NORWAY = 28,
+	COUNTRY_CHINA = 29,
+	COUNTRY_IRELAND = 30,
+	COUNTRY_SERBIA = 31,
+	COUNTRY_SAN_MARINO = 32,
+	COUNTRY_MONACO = 33,
+	COUNTRY_BRAZIL = 34,
+	COUNTRY_HONGKONG = 35,
+	COUNTRY_TAIWAN = 36,
+	COUNTRY_NEWZEALAND = 37,
+	COUNTRY_SLOVAKIA = 38,
+	COUNTRY_SINGAPORE = 39,
+	COUNTRY_NORTH_AFRICA = 40,
+	COUNTRY_BELGIUM_FRENCH = 41,
+	COUNTRY_BELGIUM_DUTCH = 42,
+	COUNTRY_SOUTH_AFRICA = 43,
+	COUNTRY_ESTONIA = 44,
+	COUNTRY_ASIAWEUROPE_ANALOG = 45,
+	COUNTRY_HONGKONG_UK_ANALOG = 46,
+	COUNTRY_NZL_INDONESIA_ANALOG = 47,
+	COUNTRY_SOUTH_AFRICA_ANALOG = 48,
+	COUNTRY_AMERICA_ANALOG = 49,
+	COUNTRY_CHINA_ANALOG = 50,
+	COUNTRY_EASTEUROPE_ANALOG = 51,
+	COUNTRY_LUXEMBOURG = 52,
+	COUNTRY_SLOVENIA = 53,
+	COUNTRY_KAZAKHSTAN = 54,
+	COUNTRY_LATVIA = 55,
+	COUNTRY_LITHUANIA = 56,
+	COUNTRY_UKRAINE = 57,
+	COUNTRY_CIS = 58,
+	COUNTRY_GENERALCABLE = 59,
+	COUNTRY_VIETNAM = 60,
+	COUNTRY_IRAN = 61,
+	COUNTRY_TUNIS = 62,
+	COUNTRY_COLOMBIA = 63,
+	COUNTRY_CHILE = 64,
+	COUNTRY_PERU = 65,
+	COUNTRY_INDONESIA = 66,
+	COUNTRY_ARGENTINA = 67,
+	COUNTRY_ISRAEL = 68,
+	COUNTRY_EQUADOR = 69,
+	COUNTRY_BOLIVIA = 70,
+	COUNTRY_URUGUAY = 71,
+	COUNTRY_PARAGUAY = 72,
+	COUNTRY_SELA_ATV = 73,
+	COUNTRY_SELA_ISDB = 74,
+	COUNTRY_SELA_DVB = 75,
+	COUNTRY_GHANA = 76,
+	COUNTRY_KENYA = 77,
+	COUNTRY_OTHER = 78,
+	COUNTRY_THAILAND = 79,
+	COUNTRY_COSTARICA = 80,
+	COUNTRY_INDIA = 81,
+	COUNTRY_MAL = 82,	
+	COUNTRY_NIGERIA = 83,
+	COUNTRY_UAE = 84,
+	COUNTRY_PHL = 85,	
+	COUNTRY_CUBA = 86,
+	COUNTRY_MAX,
+}ECountry;
+
+typedef enum
+{
+	LANGUAGE_MIN = 0,
+	LANGUAGE_KOR,
+	LANGUAGE_ENG_US,
+	LANGUAGE_SPA_US,
+	LANGUAGE_FRA_US,
+	LANGUAGE_POR_US,
+	LANGUAGE_BUL,
+	LANGUAGE_CRO,
+	LANGUAGE_CZE,
+	LANGUAGE_DAN,
+	LANGUAGE_DUT,
+	LANGUAGE_FIN,
+	LANGUAGE_FRA,
+	LANGUAGE_DEU,
+	LANGUAGE_GRE,
+	LANGUAGE_HUN,
+	LANGUAGE_ITA,
+	LANGUAGE_NOR,
+	LANGUAGE_ENG,
+	LANGUAGE_POL,
+	LANGUAGE_POR,
+	LANGUAGE_ROM,
+	LANGUAGE_RUS,
+	LANGUAGE_SER,
+	LANGUAGE_SLK,
+	LANGUAGE_SPA,
+	LANGUAGE_SWE,
+	LANGUAGE_TUR,
+	LANGUAGE_CHI,
+	LANGUAGE_HKG,
+	LANGUAGE_TPE,
+	LANGUAGE_JPN,
+	LANGUAGE_MAO,
+	LANGUAGE_CMN,
+	LANGUAGE_YUE,
+	LANGUAGE_HIN,
+	LANGUAGE_EST,
+	LANGUAGE_LAT,
+	LANGUAGE_LTU,
+	LANGUAGE_ARA,	//!< Arab
+	LANGUAGE_PER,	//!< Farsi
+	LANGUAGE_QAA,
+	LANGUAGE_AD,
+	LANGUAGE_CAT,
+	LANGUAGE_VAL,
+	LANGUAGE_THA,
+	LANGUAGE_HEB,
+	LANGUAGE_IND,
+	LANGUAGE_VIE,
+	LANGUAGE_URD,
+	LANGUAGE_AFR,
+	LANGUAGE_ZUL,
+	LANGUAGE_XHO,
+	LANGUAGE_YOR,
+	LANGUAGE_IGB,
+	LANGUAGE_HAU,
+	LANGUAGE_SWA,
+	LANGUAGE_AMH,
+	LANGUAGE_TAM,
+	LANGUAGE_IRA,
+	LANGUAGE_FIL,
+	LANGUAGE_LIT,
+	LANGUAGE_LAV,
+	LANGUAGE_SLV,
+	LANGUAGE_ALB,
+	LANGUAGE_UKR,
+	LANGUAGE_KAZ,
+	LANGUAGE_MKD,
+	LANGUAGE_MAY,
+	LANGUAGE_WEL,
+	LANGUAGE_GLA,
+	LANGUAGE_IRI,
+	LANGUAGE_AKA,
+	LANGUAGE_TWI,
+	LANGUAGE_EWE,
+	LANGUAGE_GAA,
+	LANGUAGE_NZI,
+	LANGUAGE_NBL,
+	LANGUAGE_NSO,
+	LANGUAGE_SOT,
+	LANGUAGE_SSW,
+	LANGUAGE_TSO,
+	LANGUAGE_TSN,
+	LANGUAGE_VEN,
+	LANGUAGE_UZB,		
+	LANGUAGE_AZE,		
+	LANGUAGE_MON,		
+	LANGUAGE_BOS,		
+	LANGUAGE_BEN,		
+	LANGUAGE_TEL,		
+	LANGUAGE_MAR,		
+	LANGUAGE_KOK,		
+	LANGUAGE_GUJ,		
+	LANGUAGE_KAN,		
+	LANGUAGE_MAL,		
+	LANGUAGE_ORI,		
+	LANGUAGE_PAN,		
+	LANGUAGE_ASM,		
+	LANGUAGE_DAG,		
+	LANGUAGE_XSM,
+	LANGUAGE_QAB,
+	LANGUAGE_QAC,
+	LANGUAGE_MSA,
+	LANGUAGE_ZHO,
+	LANGUAGE_OTHER,
+	LANGUAGE_MAX = LANGUAGE_OTHER,
+}ELanguage;
+
+typedef enum
+{
+	COUNTRYDIFF_USEONID = 0,
+	COUNTRYDIFF_NETWORKCOLOR_A = 1,
+	COUNTRYDIFF_NOTSUPPORT = 2,
+	COUNTRYDIFF_MAX,
+}ECountryDifferentiation;
+
+typedef enum
+{
+	EMAP_ORDERED = 0,
+	EMAP_OTHERONID,
+	EMAP_UNORDERED,
+	EMAP_PTCORDER,
+	EMAP_OVERFLOWORDER,
+	EMAP_DUPLICATED,	
+	EMAP_MAX,
+}EOtherCountryTargetMap;
+
+typedef enum
+{
+	TYPE_ONID_TSID_SID = 0,
+	TYPE_ONID_SID = 1,
+	TYPE_PTC_SID = 2,
+	TYPE_ONID_TSID_SID_SNAME = 3,
+	TYPE_VSID = 4,		// for Astra HD+: virtual service id
+	TYPE_ATSC = 5,
+	TYPE_MAX = 6,
+	TYPE_ONID_TSID_SID_LCN = 7,
+}EServicekeyType;
+
+typedef enum
+{
+	ZERO_NOTUSED = 0,
+	ZERO_OUT_OF_RANGE = 1,
+	ZERO_INVALIDE_DELETE = 2,
+	ZERO_INVISIBLE_NOTSELECT = 3,
+	ZERO_INVISIBLE_SELECT = 4,
+	ZERO_VISIBLE_SELECT = 5,
+	ZERO_MAX,
+}ELCNZeroPolicy;
+
+typedef enum
+{
+	CONFLICT_NORMAL_POLICY = 0,
+	CONFLICT_NORWAYSPEC_POLICY = 1,
+	CONFLICT_BESTSIGNAL_POLICY = 2,
+	CONFLICT_TIVU_POLICY = 3,
+	CONFLICT_NETWORKCOLOR_A_PRIORITY = 4,
+	CONFLICT_ASTRAHDPLUS_POLICY = 5,
+	CONFLICT_MAX,
+}EConflictLocatorPolicy;
+
+typedef enum
+{
+	CONFLICTRCN_NORMAL = 0,
+	CONFLICTRCN_HDSERVICE_PRIORITY = 1,
+	CONFLICTRCN_HDLCN_PRIORITY = 2,
+	CONFLICTRCN_PRIORITY_ID = 3,
+	CONFLICTRCN_HDSERVICE_FMRADIO_PRIORITY = 4,
+	CONFLICTRCN_MAX,
+}ERCNPriority;
+
+typedef enum
+{
+	SDTOTHER_NOT_USE = 0,
+	SDTOTHER_AccordingTo_ALWAYS = 1,
+	SDTOTHER_AccordingTo_FINC_POLICY = 2,
+	SDTOTHER_AccordingTo_HomingScanOnly = 3,
+	SDTOTHER_AccordingTo_NETWORK_MODE = 4,
+}ESDTOtherPolicy;
+
+typedef enum
+{
+	REF_EITAUDIO_NONE =0,
+	REF_EITAUDIO_BR = 1,
+	REF_EITAUDIO_NZ = 2,
+	REF_EITAUDIO_SKYD = 3,
+}ERefEitAudioInfo;
+
+typedef enum
+{
+	INVISIBLESERVICE_NOTSUPPORT = 0,
+	INVISIBLESERVICE_EBOOK = 1,
+	INVISIBLESERVICE_DBOOK = 2,
+	INVISIBLESERVICE_NORDIG = 3,
+	INVISIBLESERVICE_AU = 4,
+	INVISIBLESERVICE_FSAT = 5,	
+	INVISIBLESERVICE_NOTSELECT = 6,
+	INVISIBLESERVICE_VOO = 7,
+}EInvisibleType;
+
+typedef enum
+{
+	RESCAN_NOTSUPPORT = 0,
+	RESCAN_NIT_VERSION = 1<<0, 							/*  1*/
+	RESCAN_CABLE_DELIVERY_SYSTEM_DESC = 1<<1,			/*  2*/
+	RESCAN_TERRESTRIAL_DELIVERY_SYSTEM_DESC = 1<<2,	/*  4*/
+	RESCAN_SATELLITE_DELIVERY_SYSTEM_DESC= 1<<3,		/*  8*/
+	RESCAN_FREQUENCY_LIST_DESC= 1<<4,					/* 16*/
+	RESCAN_NIT_MUX_ADD = 1<<5, 							/* 32*/
+	RESCAN_NIT_MUX_ADD_REMOVE= 1<<6,					/* 64 */
+}ERescanEventType;
+
+typedef enum
+{
+	SCANPARAM_NOTSUPPORT = 0,
+	SCANPARAM_LINEAR = 1,
+	SCANPARAM_CABLE_DELIVERY_SYSTEM_DESC = 2,
+	SCANPARAM_TERRESTRIAL_DELIVERY_SYSTEM_DESC = 3,
+	SCANPARAM_SATELLITE_DELIVERY_SYSTEM_DESC = 4,
+	SCANPARAM_FREQUENCY_LIST_DESC = 5,
+	SCANPARAM_NIT_MUX = 6,
+	SCANPARAM_MAX = SCANPARAM_NIT_MUX,
+}EScanParamAddType;
+
+//App config
+typedef enum
+{
+	STANDARD_AUS = 0,
+	STANDARD_DVB = 1,
+	STANDARD_NMA = 2,
+	STANDARD_NZE = 3,
+	STANDARD_BRZ = 4,
+	STANDARD_TERACOM = 5,
+	STANDARD_CTE_TNT = 6,
+	STANDARD_ITA = 7,
+	STANDARD_ZIGGO = 8,
+	STANDARD_ASTRA_HD_PLUS = 9,
+	STANDARD_ESP_TDT = 10,
+	STANDARD_CYFRA_PLUS = 11,
+	STANDARD_UPC = 12,
+	STANDARD_FRANSAT = 13,
+	STANDARD_ATSC = 14,
+	STANDARD_TELENET = 15,
+	STANDARD_NOT_SUPPORT = 16,
+}EParentalLock;
+
+typedef enum
+{
+	SBT_PRIORITY_ORDER = 0,
+	SBT_PRIORITY_DVB = 1,
+	SBT_PRIORITY_TTX = 2,
+}ESBTPriority;
+
+typedef enum
+{
+	DVB_PDSD_INIT           = 0x0,
+	DVB_PDSD_UK_DTT         = 0x0000233a,
+	DVB_PDSD_UK_FSAT        = 0x46534154, // UK Freesat
+	DVB_PDSD_EACEM          = 0x00000028,
+	DVB_PDSD_NORDIG 		= 0x00000029, // Nordig
+	DVB_PDSD_FRANCE_TELECOM = 0xfcfcfcfc, // France
+	DVB_PDSD_TELE_DENMARK   = 0x00000031, // Denish
+	DVB_PDSD_NEWZEALAND     = 0x00000037,
+	DVB_PDSD_CABO_PORTU     = 0x00000008, // Portugal
+	DVB_PDSD_SWEDISH        = 0x00000014, // Swedish
+	DVB_PDSD_TELENET        = 0x54454C45, // Belgium
+	DVB_PDSD_ASTRA          = 0x00000001, // Astra
+	DVB_PDSD_CANAL_PLUS     = 0x00000036, // Canal Plus
+	DVB_PDSD_CYFRA_PLUS 	= 0x000000a5, // Cyfra+
+	DVB_PDSD_DSMART         = 0x00006001, // D-Smart
+	DVB_PDSD_NUMERICABLE    = 0x00000022, // NumeriCable
+	DVB_PDSD_KDG			= 0x4A4F4A4F, // KDG cable, Germany 
+	DVB_PDSD_FRANSAT		= 0x0000055f, // Fransat
+	DVB_PDSD_SKYD			= 0x000000BE, // Sky-D
+	DVB_PDSD_NNK			= 0x000000B0, // NNK
+	DVB_PDSD_NC_PLUS		= 0x0000003f, // NC+
+	DVB_PDSD_VOO			= 0x00564F4F, // Belgium cable
+
+	//------- Fake PDSDs ---------------------------------------------//
+	// are not broadcast in the air, but are necessary for proper software operation.
+	// Values are assigned randomly, might be changed without consequences.
+	DVB_PDSD_DIGITAL_PLUS 	= 0x001FFFFF, // Digital Plus
+	DVB_PDSD_DIGITURK       = 0x002FFFFF, // Digiturk
+	DVB_PDSD_OTAU			= 0x003FFFFF, // OTAU Tv
+	DVB_PDSD_POLSAT			= 0x004FFFFF, // Cyfrowy Polsat
+	DVB_PDSD_TELEKARTA		= 0x005FFFFF, // Telekarta
+	DVB_PDSD_TRICOLOR		= 0x006FFFFF, // Tricolor
+	//---------------------------------------------------------------//
+
+	DVB_PDSD_CI_PLUS        = 0x00000040,
+	DVB_PDSD_SINGAPORE		= 0x00000019,
+	DVB_PDSD_THAILAND		= 0x000022FC,
+	DVB_PDSD_AIRTEL         = 0x00006001, //India Airtel
+	DVB_PDSD_RCS			= 0x1a0,	  //Romaniaa Cable RCS
+	DVB_PDSD_GHANA			= 0x00002221, //Virtual PDSD for Ghana, Ghana use LCNv2 of Nordig Spec, LCNv1 of E_Book
+	DVB_PDSD_MAL			= 0x000021CA, //Malaysia use LCNv2 of Nordig Spec, LCNv1 of E_Book
+	DVB_PDSD_INDONESIA		= 0x00002168, //Indonesia use LCNv2 of Nordig Spec, LCNv1 of E_Book
+
+	DVB_PDSD_ALLOW_ALL      = 0x00FFFFFF,
+	DVB_PDSD_INVALID        = 0xFFFFFFFF,
+}EDVBPDSD;
+
+typedef enum
+{
+	PRIOR_DOLBY = 0,
+	PRIOR_HEAAC = 1,
+	PRIOR_MPEG = 2,
+	PRIOR_DOLBY_IGNORE_CHANNEL = 3,
+	PRIOR_DOLBY_LOWPID =4,
+	PRIOR_DRA = 5,
+	PRIOR_FIRST = 6,
+}EAudioPrior;
+
+typedef enum
+{
+	TRIPLEOFFSET_OFF = 0,
+	TRIPLEOFFSET_ON = 1,
+}ETripleOffset;
+
+typedef enum
+{
+	SCAN_FULL = 0,
+	SCAN_NETWORK = 1,
+	SCAN_QUICK = 2,
+	SCAN_QUICK_SMATV = 3,
+	SCAN_CABLE_SMATV = 4,
+	SCAN_FULL_NETWORK_QUICK = 5,
+}EScanSupportType;
+
+typedef enum
+{
+	UPDATE_ALWAYS = 0,
+	NOTUPDATE_COND_NO_SDT = 1,
+	NOTUPDATE_COND_HIGH_BER = 2,
+}EExceptPSIUpdateCondition;
+
+typedef enum
+{
+	EDIT_CHANNEL_ALWAYS_SUPPORT = 0,
+	EDIT_CHANNEL_DECIDE_ON_USER = 1,
+	EDIT_CHANNEL_NOT_SUPPORT = 2,
+}EEditChannelNumberCondition;
+
+typedef enum
+{
+	// for Digital+
+	BOUQUET_DIGITAL_PLUS_ASTRA = 0x21,
+	BOUQUET_DIGITAL_PLUS_HISPASAT = 0x20,
+
+	// for Cyfra+
+	BOUQUET_CYFRA_PLUS = 0xC024,
+
+	// for Digiturk
+	BOUQUET_DIGITURK_EUTELSAT = 0x10FC,
+	BOUQUET_DIGITURK_TURKSAT = 0x97,	// changed from 0x84 to 0x97 according to Digiturk spec (v2.19)
+
+	// for D-Smart
+	BOUQUET_DSMART_SDU = 0x6058,		// modify from 0x6090 to 0x6058 . --> D-smart spec is changed. 0x6090 is SD bouquet.
+	BOUQUET_DSMART_MDU = 0x6051,
+
+	// for Fransat
+	BOUQUET_FRANSAT = 0x71,
+
+	//for Sky-D
+	BOUQUET_SKYD = 0x5003,
+
+	// for AirTel (India Satellite)
+	BOUQUET_AIRTEL = 0x6078,
+
+	// for OTAU Tv (Kazakhstan Satellite)
+	BOUQUET_OTAU = 0x5F41,
+
+}EBouquetId;
+
+typedef enum
+{
+	VI_Is_RAD = 0,
+	VI_Is_BAD = 1,
+	HI_Is_VI = 2,
+}EUpdateAudioMethod;
+
+//To descript next time of change status for TOT
+typedef enum
+{
+	Default = 0,
+	AcceptNTO_OverOneHourDifference = 1,// 1시간 단위가 아니라도 무조건 적용.
+	AcceptTOT_OnValidTP = 2, //Dsmart,Digiturk에서 사용. Vaild TOT인 경우 취함.
+
+	DEFAULT = 0,
+	ACCEPT_NTO_OVER_ONE_HOUR_DIFFERENCE = 1,
+	ACCEPT_TOT_ON_VALID_TP = 2,
+}ETOTOption;
+
+typedef enum
+{
+	USE_SAMSUNG_EPG_ONLY = 0,
+	USE_MHEG_EPG_ONLY = 1,
+	USE_MHEG_EPG_IF_AVAILABLE = 2,
+}ESupportEPGType;
+
+typedef enum
+{
+	RATING_UNRATED			= 0x01,		//< No programs/content will be blocked.(Default selection for AirTel)
+	RATING_OVER_SEVENTEEN	= 0x0e,		//< All programs/content with parental age rating above 17 will be blocked (Telenet case).
+	RATING_OVER_EIGHTEEN	= 0x0f,		//< All programs/content with parental age rating above 18 will be blocked.
+	RATING_OVER_TWELVE		= 0x09,		//< All programs/content with parental age rating above 12 will be blocked.
+	RATING_ALL				= 0xff,		//< No programs/content will be blocked.
+}EParentalRatingInit;
+
+typedef enum
+{
+	NO_EFFECT_OF_EIT_CHANGE = 0,
+	LOCK_CHANNEL_HIGHER_OR_18_RATING = 1,
+	LOCK_CHANNEL_NEW_PROGRAM = 2,
+	LOCK_CHANNEL_HIGHER_RATING = 3,
+}EParentalLockWithEIT;
+
+typedef enum
+{
+	PAN_EURO = 0,
+	PAN_NORDIC = 1,
+	PAN_ATSC = 2,
+	ASIA_DTV = 3,
+	HIDE_GROUP = 4,
+}ECountryGroup;
+
+typedef enum
+{
+	TIMEZONE_OFFSET_NEWFOUNDLAND	= -210,
+	TIMEZONE_OFFSET_ATLANTIC		= -240,
+	TIMEZONE_OFFSET_EASTERN			= -300,
+	TIMEZONE_OFFSET_CENTRAL			= -360,
+	TIMEZONE_OFFSET_MOUNTAIN		= -420,
+	TIMEZONE_OFFSET_PACIFIC			= -480,
+	TIMEZONE_OFFSET_ALASKA			= -540,
+	TIMEZONE_OFFSET_HAWAII			= -600,
+}EUSADefaultTimeOffSetbyRegionID;
+
+typedef enum
+{
+	REGION_UNKNOWN = 0,
+	REGION_KOR,
+	REGION_USA,
+	REGION_BRA,
+	REGION_PANEURO,
+	REGION_CHI,
+	REGION_HKG,
+	REGION_PANNORDIG,
+	REGION_ASIA_ATV,
+	REGION_ASIA_DTV,
+	REGION_TAIWAN,
+	REGION_NORTHAFRICA,
+	REGION_PHI,
+	REGION_COLOMBIA,
+	REGION_CHILE,
+	REGION_PERU,
+	REGION_JPN,
+	REGION_SA_ATV,
+	REGION_ARG_DTV, //ARGENTINA
+	REGION_ED_DTV,
+	REGION_URUGUAY,
+	REGION_PARAGUAY,
+	REGION_SOUTHAFRICA,
+	REGION_INDIA_ATV,
+	REGION_CHI_ATV,
+	REGION_SELA_ATV,
+	REGION_SELA_DTV,
+	REGION_SELA_ISDB,
+	REGION_PANAMA,
+	REGION_EQUADOR,
+	REGION_PHI_DTV,
+	REGION_INDIA_DTV,
+//	REGION_ARB,
+//	REGION_SOUTHEASTASIA,
+//	REGION_EA_DTV,
+//	REGION_CIS,
+	REGION_AFRICA_DTV,
+	REGION_AFRICA_ATV,
+	REGION_CUBA,
+	REGION_MAX,
+}ERegion;
+
+typedef enum
+{
+	COUNTRY_CODE_UNDEFINED   =0xffffff,
+	COUNTRY_CODE_UK          =0x474252,
+	COUNTRY_CODE_GERMANY     =0x444555,
+	COUNTRY_CODE_SPAIN       =0x455350,
+	COUNTRY_CODE_ITALY       =0x495441,
+	COUNTRY_CODE_SWEDEN      =0x535745,
+	COUNTRY_CODE_FRANCE      =0x465241,
+	COUNTRY_CODE_BULGARIA    =0x424752,
+	COUNTRY_CODE_CROATIA     =0x485256,
+	COUNTRY_CODE_CZECH       =0x435A45,
+	COUNTRY_CODE_NETHERLANDS =0x4E4C44,
+	COUNTRY_CODE_GREECE      =0x475243,
+	COUNTRY_CODE_HUNGARY     =0x48554E,
+	COUNTRY_CODE_POLAND      =0x504F4C,
+	COUNTRY_CODE_PORTUGAL    =0x505254,
+	COUNTRY_CODE_ROMANIA     =0x524f55,
+	COUNTRY_CODE_RUSSIA      =0x525553,
+	COUNTRY_CODE_SWITZERLAND =0x434845,
+	COUNTRY_CODE_TURKEY      =0x545552,
+	COUNTRY_CODE_AUSTRALIA   =0x415553,
+	COUNTRY_CODE_AUSTRIA     =0x415554,
+	COUNTRY_CODE_BELGIUM     =0x42454C,
+	COUNTRY_CODE_DENMARK     =0x444E4B,
+	COUNTRY_CODE_FINLAND     =0x46494E,
+	COUNTRY_CODE_NORWAY      =0x4E4F52,
+	COUNTRY_CODE_CHINA       =0x43484E,
+	COUNTRY_CODE_HONGKONG	=0x484B47,
+	COUNTRY_CODE_IRELAND     =0x49524C,
+	COUNTRY_CODE_SERBIA      =0x535242,
+	COUNTRY_CODE_SAN_MARINO  =0x534D52,
+	COUNTRY_CODE_MONACO      =0x4D434f,
+	COUNTRY_CODE_BRAZIL      =0x425241,
+	COUNTRY_CODE_NEWZEALAND = 0x4E5A4C,
+	COUNTRY_CODE_SINGAPORE	=0x534750,
+	COUNTRY_CODE_TAIWAN		=0x54574E,
+	COUNTRY_CODE_SLOVAKIA	=0x53564B,
+	COUNTRY_CODE_SOUTH_AFRICA	=0x5a4146,
+	COUNTRY_CODE_ESTONIA		=0x455354,
+	COUNTRY_CODE_VIETNAM	=0x564E4D,	//VNM
+	COUNTRY_CODE_IRAN		=0x49524E,
+	COUNTRY_CODE_COLOMBIA	=0x434f4C,
+	COUNTRY_CODE_TUNIS	=0x54554E,
+	COUNTRY_CODE_CHILE	=0x43484C,
+	COUNTRY_CODE_PERU	=0x504552,
+	COUNTRY_CODE_LUXEMBOURG	= 0x4C5558,
+	COUNTRY_CODE_SLOVENIA	= 0x53564E,
+	COUNTRY_CODE_JAPAN	=0x4A504E,
+	COUNTRY_CODE_INDONESIA	=0x49444E, //IDN
+	COUNTRY_CODE_ARGENTINA	=0x415247, //ARG
+	COUNTRY_CODE_EQUADOR = 0x455155,	   //EQU
+	COUNTRY_CODE_PANAMA	= 0x50414E,
+	COUNTRY_CODE_BOLIVIA	= 0x424F4C,
+	COUNTRY_CODE_URUGUAY = 0x555255,
+	COUNTRY_CODE_PARAGUAY = 0x504152,
+	COUNTRY_CODE_KOR = 0x4B4F52, //KOR
+	COUNTRY_CODE_USA = 0x555341, //USA
+	COUNTRY_CODE_LITHUANIAN = 0x4C5455,//LTU
+	COUNTRY_CODE_SELA_ISDB = 0x455155,	   //EQUADOR
+	COUNTRY_CODE_SELA_DVB = 0x50414E,	//PANAMA
+	COUNTRY_CODE_GHANA = 0x474841,
+	COUNTRY_CODE_KENYA = 0x4b454e,
+	COUNTRY_CODE_THAILAND = 0x544841,	//THA
+	COUNTRY_CODE_COSTARICA = 0x637269,	//CRI
+	COUNTRY_CODE_OTHER    =0x4f5448,
+	COUNTRY_CODE_INDIA = 0x494E44,     //INA
+	COUNTRY_CODE_UKRAINE = 0x756b72,	//UKR, Ukraine
+	COUNTRY_CODE_KAZAKHSTAN = 0x6b617a,	//KAZ, Kazakhstan
+	COUNTRY_CODE_MAL = 0x4d5953, //MYS
+	COUNTRY_CODE_PHL = 0x50484C, //PHL
+	COUNTRY_CODE_NIGERIA = 0x4e4741, //NGA
+	COUNTRY_CODE_CUB = 0x435542, //CUB
+	COUNTRY_CODE_ANY = 0xffff00,
+}ECountryCode;
+
+typedef enum
+{
+	DVBSPEC_USA = 0,
+	DVBSPEC_KOR = 1,
+	DVBSPEC_SPA = 2,
+	DVBSPEC_FRA = 3,
+	DVBSPEC_EU = 4,
+	DVBSPEC_UK = 5,
+	DVBSPEC_UK_FSAT = 6,
+	DVBSPEC_GERMANY = 7,
+	DVBSPEC_GERMANY_CABLE = 8,
+	DVBSPEC_ITALY = 9,
+	DVBSPEC_TIVU = 10,
+	DVBSPEC_SWEDEN = 11,
+	DVBSPEC_SWEDEN_CABLE = 12,
+	DVBSPEC_BULGARIA = 13,
+	DVBSPEC_CROATIA = 14,
+	DVBSPEC_CZECH = 15,
+	DVBSPEC_NETHERLANDS = 16,
+	DVBSPEC_NETHERLANDS_CABLE = 17,
+	DVBSPEC_GREECE = 18,
+	DVBSPEC_HUNGARY = 19,
+	DVBSPEC_POLAND = 20,
+	DVBSPEC_PORTUGAL = 21,
+	DVBSPEC_ROMANIA = 22,
+	DVBSPEC_RUSSIA = 23,
+	DVBSPEC_SWITZERLAND = 24,
+	DVBSPEC_TURKEY = 25,
+	DVBSPEC_AUSTRALIA = 26,
+	DVBSPEC_AUSTRIA = 27,
+	DVBSPEC_BELGIUM = 28,
+	DVBSPEC_DENMARK = 29,
+	DVBSPEC_DENMARK_CABLE = 30,
+	DVBSPEC_FINLAND = 31,
+	DVBSPEC_FINLAND_CABLE = 32,
+	DVBSPEC_NORWAY = 33,
+	DVBSPEC_CANAL_DIGITAL = 34,	// refer to Common Requirement specification for IDTV 1.1
+	DVBSPEC_CANAL_DIGITAL_SAT = 35,
+	DVBSPEC_CHINA = 36,
+	DVBSPEC_CHINA_CABLE = 37,
+	DVBSPEC_IRELAND = 38,
+	DVBSPEC_SERBIA = 39,
+	DVBSPEC_SAN_MARINO = 40,
+	DVBSPEC_MONACO = 41,
+	DVBSPEC_BRAZIL = 42,
+	DVBSPEC_HONGKONG = 43,
+	DVBSPEC_TAIWAN = 44,
+	DVBSPEC_NEWZEALAND = 45,
+	DVBSPEC_SLOVAKIA = 46,
+	DVBSPEC_SINGAPORE = 47,
+	DVBSPEC_GENERALCABLE = 48,
+	DVBSPEC_SATELLITE = 49,
+	DVBSPEC_ZIGGO_CABLE = 50,
+	DVBSPEC_HOTEL = 51,
+	DVBSPEC_SOUTH_AFRICA = 52,
+	DVBSPEC_ESTONIA = 53,
+	DVBSPEC_IRAN = 54,
+	DVBSPEC_JAPAN = 55,
+	DVBSPEC_CD_TVV_SAT = 56,
+	DVBSPEC_ASTRA_HD_PLUS = 57,
+	DVBSPEC_CHILE = 59,
+	DVBSPEC_PERU = 60,
+	DVBSPEC_UPC_CABLE = 61,
+	DVBSPEC_CYFRA_PLUS = 62,
+	DVBSPEC_DIGITAL_PLUS = 63,
+	DVBSPEC_INDONESIA = 64,
+	DVBSPEC_MEDIASET = 65,//Italy Cable
+	DVBSPEC_ARGENTINA = 66,
+	DVBSPEC_DIGITURK = 67,
+	DVBSPEC_DSMART = 68,
+	DVBSPEC_FRANSAT = 69,
+	DVBSPEC_SKYD = 70,
+	DVBSPEC_OTHER = 71,
+	DVBSPEC_NUMERICABLE = 72,
+	DVBSPEC_NNK = 73,
+	DVBSPEC_EQUADOR = 74,
+	DVBSPEC_BOLIVIA = 76,
+	DVBSPEC_ORF = 77,
+	DVBSPEC_SKYLINK = 78,
+	DVBSPEC_URUGUAY = 79,
+	DVBSPEC_PARAGUAY = 80,
+	DVBSPEC_SELA_ISDB = 81,
+	DVBSPEC_SELA_DVB = 82,
+	DVBSPEC_GHANA = 83,
+	DVBSPEC_KENYA = 84,
+	DVBSPEC_TELENET = 85,
+	DVBSPEC_FREEVIEWNZ_SAT = 86,
+	DVBSPEC_THAILAND = 87,
+	DVBSPEC_COSTARICA = 88,
+	DVBSPEC_INDIA = 89,
+	DVBSPEC_AIRTEL = 90,
+	DVBSPEC_RCS = 91,
+	DVBSPEC_UKRAINE = 92,
+	DVBSPEC_KAZAKHSTAN = 93,
+	DVBSPEC_ROMANIA_OTH = 94,
+	DVBSPEC_ANALOG_ONLY = 95,
+	DVBSPEC_COLOMBIA = 96,
+	DVBSPEC_NORTH_AFRICA = 97,
+	DVBSPEC_PANAMA = 98,
+	DVBSPEC_SATELLITE_PL = 99,
+	DVBSPEC_TUNIS = 100,
+	DVBSPEC_VIETNAM = 101,
+	DVBSPEC_CAM = 102,
+	DVBSPEC_BLIZOO = 103,
+	DVBSPEC_HD_AUSTRIA = 104,
+	DVBSPEC_OTAU = 105,
+	DVBSPEC_MAGYARORSZAG = 106,
+	DVBSPEC_OTHER_PTCSIDKEY = 107,
+	DVBSPEC_THAILAND_PTCSIDKEY = 108,
+	DVBSPEC_MAL = 109,
+	DVBSPEC_UAE = 110,
+	DVBSPEC_BELGIUM_FRENCH = 111,
+	DVBSPEC_BELGIUM_DUTCH = 112,
+	DVBSPEC_PHILIPPINES = 113,
+	DVBSPEC_SCTV = 114,
+	DVBSPEC_VTVC = 115,
+	DVBSPEC_HTVC = 116,
+	DVBSPEC_POLSAT = 117,
+	DVBSPEC_TRICOLOR = 118,
+	DVBSPEC_TELEKARTA = 119,
+	DVBSPEC_NTV_PLUS = 120,
+	DVBSPEC_MTS = 121,
+	DVBSPEC_SATELLITE_OP = 122,	//<- it's DVBSPEC_SATELLITE spec for CAM
+	DVBSPEC_SUNDIRECT = 123, 
+	DVBSPEC_NIGERIA = 124, 
+	DVBSPEC_ROSTELECOM = 125, 
+	DVBSPEC_VOO = 126,
+	DVBSPEC_CUBA = 127,
+	DVBSPEC_MAX,
+}ESpecCode;
+
+typedef struct
+{
+}TSOperatorConfigSpecApp;
+
+// Latin & Japanese table index.
+enum ECharacterTable
+{
+	CHARACTER_TABLE_LATIN_ALPHABET	= 0,
+	CHARACTER_TABLE_LATIN_CYRILLIC = 1,
+	CHARACTER_TABLE_LATIN_ARABIC = 2,
+	CHARACTER_TABLE_LATIN_GREEK = 3,
+	CHARACTER_TABLE_LATIN_HEBREW = 4,
+	CHARACTER_TABLE_LATIN_NO5 = 5,
+	CHARACTER_TABLE_LATIN_NO8 = 6,
+	CHARACTER_TABLE_LATIN_NO9 = 7,
+	CHARACTER_TABLE_ISO_8859_1 = 8,
+	CHARACTER_TABLE_ISO_8859_2 = 9,
+	CHARACTER_TABLE_ISO_8859_3 = 10,
+	CHARACTER_TABLE_ISO_8859_4 = 11,
+	CHARACTER_TABLE_LATIN_NO6 = 12,
+	CHARACTER_TABLE_LATIN_NO7 = 13,
+	CHARACTER_TABLE_LATIN_THAI = 14,
+	CHARACTER_TABLE_FOLLOW_OSDLANG = 15,
+	CHARACTER_TABLE_MAX = CHARACTER_TABLE_FOLLOW_OSDLANG,
+	CHARACTER_TABLE_HIRAGANA = 0,
+	CHARACTER_TABLE_KATAKANA = 1,
+	CHARACTER_TABLE_ALPHANUMERIC = 2,
+	CHARACTER_TABLE_KANJI = 3,
+	CHARACTER_TABLE_ADDITIONAL_SYMBOL = 4,
+	CHARACTER_TABLE_JISX0201_KATAKANA = 5,
+	CHARACTER_TABLE_UNDEFINED = 6,
+};
+
+typedef enum 
+{
+	UNICODE_BRZ = 0,
+	UNICODE_CICAM = 1,
+	UNICODE_CYFRA_PLUS = 2,
+	UNICODE_DVB = 3,
+	UNICODE_JPN = 4,
+	UNICODE_SATELLITE_PL = 5,
+	UNICODE_PHI = 6,
+	UNICODE_MAX
+}EUnicodeConvType;
+
+typedef enum
+{
+	CRID_STANDARD_TYPE_NONE = 0,
+	CRID_STANDARD_TYPE_FREEVIEW = 1,      // FreeviewHD - UK, AU, NZ
+	CRID_STANDARD_TYPE_TVA = 2,			// NorDig T/C, Ireland
+	CRID_STANDARD_TYPE_DSMART = 3,		// For DSmart
+}ECRIDStandardType;
+
+
+typedef enum
+{
+	ORIGINAL_NETWORK_ID_UK          = 0x233A,
+	ORIGINAL_NETWORK_ID_UK_FSAT     = 0x003B, // UK FreeSat
+	ORIGINAL_NETWORK_ID_GERMANY     = 0x2114,
+	ORIGINAL_NETWORK_ID_SPAIN       = 0x22D4,
+	ORIGINAL_NETWORK_ID_ITALY       = 0x217C,
+	ORIGINAL_NETWORK_ID_SWEDEN      = 0x22F1, // exception (0x22F0   0x22F1)
+	ORIGINAL_NETWORK_ID_FRANCE      = 0x20FA, // refer to Media Tv Com
+	ORIGINAL_NETWORK_ID_BULGARIA    = 0x2064,
+	ORIGINAL_NETWORK_ID_CROATIA     = 0x20BF,
+	ORIGINAL_NETWORK_ID_CZECH       = 0x20CB,
+	ORIGINAL_NETWORK_ID_NETHERLANDS = 0x2210, // refer to IMPEQ
+	ORIGINAL_NETWORK_ID_GREECE      = 0x212C,
+	ORIGINAL_NETWORK_ID_HUNGARY     = 0x22C7,
+	ORIGINAL_NETWORK_ID_POLAND      = 0x2268,
+	ORIGINAL_NETWORK_ID_PORTUGAL    = 0x22C8,
+	ORIGINAL_NETWORK_ID_ROMANIA     = 0x2282,
+	ORIGINAL_NETWORK_ID_RUSSIA      = 0x2283,
+	ORIGINAL_NETWORK_ID_SWITZERLAND = 0x22F4,
+	ORIGINAL_NETWORK_ID_TURKEY      = 0x2318,
+	ORIGINAL_NETWORK_ID_AUSTRALIA   = 0x2024,
+	ORIGINAL_NETWORK_ID_AUSTRIA     = 0x2028,
+	ORIGINAL_NETWORK_ID_BELGIUM     = 0x2038,
+	ORIGINAL_NETWORK_ID_DENMARK     = 0x20D0,
+	ORIGINAL_NETWORK_ID_FINLAND     = 0x20F6,
+	ORIGINAL_NETWORK_ID_NORWAY      = 0x2242, // refer Basic IRD Specifications DTT Norway
+	ORIGINAL_NETWORK_ID_CHINA       = 0x209C,
+	ORIGINAL_NETWORK_ID_IRELAND     = 0x2174,
+	ORIGINAL_NETWORK_ID_SAN_MARINO  = 0x22A2,
+	ORIGINAL_NETWORK_ID_MONACO      = 0x21EC,
+	ORIGINAL_NETWORK_ID_BRAZIL      = 0x204C,
+	ORIGINAL_NETWORK_ID_NEWZEALAND	= 0x222A, // refer to Transmission Rules for the DVB-T Network For New zealand
+	ORIGINAL_NETWORK_ID_SINGAPORE	= 0x22BE,
+	ORIGINAL_NETWORK_ID_TAIWAN		= 0x209E,
+	ORIGINAL_NETWORK_ID_TELENOR		= 0x0046, // refer to Common Requirement specification for IDTV 1.1
+	ORIGINAL_NETWORK_ID_SLOVAKIA	= 0x22BF,
+	ORIGINAL_NETWORK_ID_ZIGGO 		= 0x01F4,
+	ORIGINAL_NETWORK_ID_HONGKONG	= 0x2158,
+	ORIGINAL_NETWORK_ID_TIVU		= 0x13E,
+	ORIGINAL_NETWORK_ID_ESTONIA		= 0x20E9,
+	ORIGINAL_NETWORK_ID_IRAN		= 0x216C,
+	ORIGINAL_NETWORK_ID_ASTRA		= 0x0001,
+	ORIGINAL_NETWORK_ID_CHILE		= 0x2098,
+	ORIGINAL_NETWORK_ID_PERU		= 0x225C,
+	ORIGINAL_NETWORK_ID_UPC			= 0x1536,
+	ORIGINAL_NETWORK_ID_JAPAN		= 0x2188,
+	ORIGINAL_NETWORK_ID_CYFRA_PLUS	= 0x13E,
+	ORIGINAL_NETWORK_ID_COLOMBIA	= 0x20AA,
+	ORIGINAL_NETWORK_ID_INDONESIA	= 0x2168,
+	ORIGINAL_NETWORK_ID_ARGENTINA	= 0x2020,
+	ORIGINAL_NETWORK_ID_DIGITURK	= 0x007E,
+	ORIGINAL_NETWORK_ID_DIGITURK_TURKSAT = 0x002A, // Only for Turksat. Eutelsat uses ORIGINAL_NETWORK_ID_DIGITURK as same before.
+	ORIGINAL_NETWORK_ID_DSMART		= 0x0042,
+	ORIGINAL_NETWORK_ID_NUMERICABLE = 0xfd2a,
+	ORIGINAL_NETWORK_ID_FRANSAT		= 0x055F,
+	ORIGINAL_NETWORK_ID_NNK			= 0x013E,
+	ORIGINAL_NETWORK_ID_EQUADOR		= 0x20E2, //ECUADOR
+	ORIGINAL_NETWORK_ID_PANAMA		= 0x224F,
+	ORIGINAL_NETWORK_ID_BOLIVIA		= 0x2044,
+	ORIGINAL_NETWORK_ID_ORF			= 0x2028,
+	ORIGINAL_NETWORK_ID_URUGUAY		= 0x2858,
+	ORIGINAL_NETWORK_ID_PARAGUAY	= 0x2600,
+	ORIGINAL_NETWORK_ID_SELA_ISDB	= 0x20E2, //ECUADOR
+	ORIGINAL_NETWORK_ID_SELA_DVB	= 0x224F, //PANAMA
+	ORIGINAL_NETWORK_ID_TELENET 	= 0x0001, //Telenet, Belgium
+	ORIGINAL_NETWORK_ID_FREEVIEWNZ_SAT = 0x002F,
+	ORIGINAL_NETWORK_ID_THAILAND	= 0x22FC,
+	ORIGINAL_NETWORK_ID_AIRTEL		= 0xac,
+	ORIGINAL_NETWORK_ID_RCS 		= 0x1,
+	ORIGINAL_NETWORK_ID_GHANA		= 0x2120,
+	ORIGINAL_NETWORK_ID_MAL			= 0x21CA,	
+	ORIGINAL_NETWORK_ID_UAE			= 0x2310,
+	ORIGINAL_NETWORK_ID_POLSAT		= 0x0071,
+	ORIGINAL_NETWORK_ID_TELEKARTA	= 0x0001,
+	ORIGINAL_NETWORK_ID_SUNDIRECT	= 0x12,	
+	ORIGINAL_NETWORK_ID_NIGERIA		= 0x2236,
+	ORIGINAL_NETWORK_ID_BLIZOO		= 0x00C8,
+	ORIGINAL_NETWORK_ID_INVALID		= 0xFFFF
+} EOriginalNetworkId;
+
+typedef enum 
+{
+	JAPAN_WA_UNDEFINED = 0,
+	JAPAN_WA_HOKKAIDO,
+	JAPAN_WA_TOHOKU,
+	JAPAN_WA_KANTO,
+	JAPAN_WA_KOUSHINETSU_HOKURIKU,
+	JAPAN_WA_CHUBU_TOUKAI,
+	JAPAN_WA_KINKI,
+	JAPAN_WA_CHUGOKU_SHIKOKU,
+	JAPAN_WA_KYUSHU_OKINAWA,
+} EJapanWideArea;
+
+typedef enum
+{
+	// JAPAN_WA_HOKKAIDO
+	JAPAN_AREA_SAPPORO = 10,
+	JAPAN_AREA_HAKODATE,
+	JAPAN_AREA_ASAHIKAWA,
+	JAPAN_AREA_OBIHIRO,
+	JAPAN_AREA_KUSHIRO,
+	JAPAN_AREA_KITAMI,
+	JAPAN_AREA_MURORAN,
+
+	// JAPAN_WA_TOHOKU
+	JAPAN_AREA_AOMORI,
+	JAPAN_AREA_IWATE,
+	JAPAN_AREA_MIYAGI,
+	JAPAN_AREA_AKITA,
+	JAPAN_AREA_YAMAGATA,
+	JAPAN_AREA_FUKUSHIMA,
+
+	// JAPAN_WA_KANTO
+	JAPAN_AREA_IBARAKI,
+	JAPAN_AREA_TOCHIGI,
+	JAPAN_AREA_GUNMA,
+	JAPAN_AREA_SAITAMA,
+	JAPAN_AREA_CHIBA,
+	JAPAN_AREA_TOKYO,
+	JAPAN_AREA_TOKYO_ISLAND,
+	JAPAN_AREA_KANAGAWA,
+
+	// JAPAN_WA_KOUSHINETSU_HOKURIKU
+	JAPAN_AREA_NIIGATA,
+	JAPAN_AREA_TOYAMA,
+	JAPAN_AREA_ISHIKAWA,
+	JAPAN_AREA_FUKUI,
+	JAPAN_AREA_YAMANASHI,
+	JAPAN_AREA_NAGANO,
+
+	// JAPAN_WA_CHUBU_TOUKAI
+	JAPAN_AREA_GIFU,
+	JAPAN_AREA_SHIZUOKA,  
+	JAPAN_AREA_AICHI,
+	JAPAN_AREA_MIE,
+
+	// JAPAN_WA_KINKI
+	JAPAN_AREA_SHIGA,
+	JAPAN_AREA_KYOTO,
+	JAPAN_AREA_OSAKA,
+	JAPAN_AREA_HYOGO,
+	JAPAN_AREA_NARA,
+	JAPAN_AREA_WAKAYAMA,
+
+	// JAPAN_WA_CHUGOKU_SHIKOKU
+	JAPAN_AREA_TOTTORI,
+	JAPAN_AREA_SHIMANE,
+	JAPAN_AREA_OKAYAMA,
+	JAPAN_AREA_HIROSHIMA,
+	JAPAN_AREA_YAMAGUCHI,
+	JAPAN_AREA_TOKUSHIMA,
+	JAPAN_AREA_KAGAWA,
+	JAPAN_AREA_EHIME,
+	JAPAN_AREA_KOUCHI,
+
+	// JAPAN_WA_KYUSHU_OKINAWA
+	JAPAN_AREA_FUKUOKA,
+	JAPAN_AREA_SAGA,
+	JAPAN_AREA_NAGASAKI,
+	JAPAN_AREA_KUMAMOTO,
+	JAPAN_AREA_OITA,
+	JAPAN_AREA_MIYAZAKI,
+	JAPAN_AREA_KAGOSHIMA,
+	JAPAN_AREA_KAGOSHIMA_ISLAND,
+	JAPAN_AREA_OKINAWA,  
+
+	JAPAN_AREA_COMMON, //This enum is Local Common Code for all wide area/prefecture in Japan.
+	
+	JAPAN_AREA_UNDEFINED,
+} EJapanPrefecture;
+
+typedef enum
+{
+	ATM_NOT_SUPPORT =0,
+	ATM_SUPPORT = 1,
+} EATM;
+
+typedef enum
+{
+	SERVICELIST_SELECTION_NOTSUPPORT = 0,
+	SERVICELIST_SELECTION_LIST_ID = 1,					
+	SERVICELIST_SELECTION_TARGET_REGION = 2,		
+	SERVICELIST_SELECTION_NETWORK_ID = 3,		
+} EServiceListSelectionType;
+
+
+
+#endif // _SOSPECDATATYPE_H_
+
